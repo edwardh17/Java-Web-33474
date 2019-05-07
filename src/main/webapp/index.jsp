@@ -1,32 +1,30 @@
-<%-- 
-    Document   : index
-    Created on : 02/05/2019, 21:13:18
-    Author     : EducaciónIT
---%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%!
-    int sum(int a, int b) {
-    
-        return a + b;
-    }
-%>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
     <body>
-        <%for (int i=1; i<7; i++) {%>
-        <h<%=i%>>Hello World!</h<%=i%>>
-        <%}%>
-        
-        <%
-            int num = sum (3, 3);
-            out.println(num);
-        %>
-        
-        <b><%=num%></b>
-        
+        <form id="data" name="data" action="signIn" method="post">
+            <table>
+                <tr>
+                    <td><label>Login</label></td>
+                    <td><input type="text" id="username" name="username"></td>
+                </tr>
+                <tr>
+                    <td><label>Password</label></td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <% if (request.getParameter ("err") != null &&
+                       request.getParameter ("err").equals("100")) { %>
+
+                <tr>
+                    <td colspan="2"><label>USER AND PASSWORD INVALID !!!</label></td>
+                </tr>
+
+                <%}%>
+                <tr>
+                    <td><input type="submit"></td>
+                    <td><input type="reset"></td>
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
