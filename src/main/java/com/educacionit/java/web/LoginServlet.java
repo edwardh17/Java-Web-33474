@@ -2,6 +2,8 @@
 package com.educacionit.java.web;
 
 
+import com.educacionit.java.web.beans.User;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -26,7 +28,10 @@ public class LoginServlet extends HttpServlet {
 
 
             HttpSession session = request.getSession ();
-            session.setAttribute ("username", "System Administrator");
+
+            User us = new User ();
+
+            session.setAttribute ("user", us);
 
             response.sendRedirect ("home.jsp");
 
