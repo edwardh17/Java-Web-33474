@@ -1,11 +1,11 @@
+<%@page session="false"%>
+
 <!doctype html>
 <html lang="en">
 
 <%@ include file="/WEB-INF/pages/header.jsp" %>
 
 <body>
-
-<%@ include file="/WEB-INF/pages/menu.jsp" %>
 
 <!--================ Init Login Area =================-->
 <section class="contact_area section_gap">

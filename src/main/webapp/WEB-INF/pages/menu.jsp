@@ -40,7 +40,7 @@
                                 <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item active"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="signOut">Logout</a></li>
                     </ul>
                 </div>
             </div>
