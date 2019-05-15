@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 
-@WebFilter (filterName = "/authenticationFilter",
-            urlPatterns = "/*")
+//@WebFilter (filterName = "/authenticationFilter",
+//            urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
 
 
