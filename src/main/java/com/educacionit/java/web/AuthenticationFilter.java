@@ -2,6 +2,8 @@
 package com.educacionit.java.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -18,12 +20,13 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 
-//@WebFilter (filterName = "/authenticationFilter",
-//            urlPatterns = "/*")
 public class AuthenticationFilter implements Filter {
 
 
 	private ServletContext context;
+
+	private ArrayList<String> urlList;
+
 
 	private static final Logger logger = Logger.getLogger (AuthenticationFilter.class);
 
@@ -34,37 +37,44 @@ public class AuthenticationFilter implements Filter {
 	}
 
 
-	public void init (FilterConfig fConfig) {
+	public void init (FilterConfig config) {
 
-	    this.context = fConfig.getServletContext();
+		String urls = config.getInitParameter ("avoid-urls");
+		StringTokenizer token = new StringTokenizer(urls, ",");
+
+		urlList = new ArrayList<> ();
+
+		while (token.hasMoreTokens ()) {
+
+			urlList.add(token.nextToken ());
+		}
 	}
 	
-	public void doFilter (ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter (ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
 
 
-		HttpServletRequest  req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
-		
-		String uri = req.getRequestURI ();
-		
-		HttpSession session = req.getSession (false);
-
-		logger.debug (String.format ("Accessing to URI %s", uri));
-        if (uri.contains("/resources/")) {
-            chain.doFilter (request, response);
-        }
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpServletResponse response = (HttpServletResponse) res;
+		String url = request.getServletPath ();
+		boolean allowedRequest = false;
 
 
-		if (session == null && !(uri.equals ("/educacionit/") ||
-                                 uri.endsWith("index.jsp") ||
-                                 uri.endsWith ("signIn"))){
+		logger.debug (url);
 
-            res.sendRedirect("index.jsp");
-
-		} else {
-
-            chain.doFilter (request, response);
+		if (urlList.contains (url) || url.contains ("resources")) {
+			allowedRequest = true;
 		}
+
+		if (!allowedRequest) {
+
+			HttpSession session = request.getSession(false);
+
+			if (null == session) {
+				response.sendRedirect("index.jsp");
+			}
+		}
+
+		chain.doFilter (request, response);
 	}
 
 	public void destroy () {}

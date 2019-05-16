@@ -25,4 +25,19 @@
         <param-value>org.postgresql.Driver</param-value>
     </context-param>
 
+
+
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>com.educacionit.java.web.AuthenticationFilter</filter-class>
+        <init-param>
+            <param-name>avoid-urls</param-name>
+            <param-value>/index.jsp,/signIn</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
