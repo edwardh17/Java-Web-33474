@@ -1,16 +1,24 @@
+<!doctype html>
+<html lang="en">
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ include file="/WEB-INF/pages/header.jsp" %>
+
 <body>
-    <%
-        String u = (String)session.getAttribute ("username");
 
-        if (u == null) {
+<%@ include file="/WEB-INF/pages/menu.jsp" %>
 
-            response.sendRedirect ("index.jsp");
-        }
-    %>
+<!--================ Init Login Area =================-->
+<section class="contact_area section_gap">
+    <div class="container">
 
-    <h3>Welcome <%=u%></h3>
+        <H1>HOME</H1>
+
+    </div>
+</section>
+<!--================ End Login Area =================-->
+
+<%@ include file="/WEB-INF/pages/footer.jsp" %>
+
 </body>
+
 </html>
