@@ -7,7 +7,6 @@ import com.educacionit.java.web.db.DBConnectionManager;
 import com.educacionit.java.web.db.DataException;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 
@@ -34,21 +33,7 @@ public class LoginServlet extends HttpServlet {
         ServletContext sc = request.getServletContext ();
         DBConnectionManager db = (DBConnectionManager)sc.getAttribute ("db");
 
-        try {
 
-            Connection conn = db.getConnection ();
-
-            ResultSet rs = conn.createStatement().
-                    executeQuery (String.format ("select * from login where email='%s' and pw='%s'", u, p));
-
-            while (rs.next ()) {
-                ok = true;
-            }
-
-        } catch (Exception e) {
-
-            throw new DataException (e);
-        }
 
 
         if (ok) {

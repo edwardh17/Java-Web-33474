@@ -27,10 +27,10 @@
                 <form class="row contact_form" action="signIn" method="post" id="data" novalidate="novalidate">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your user name">
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter your user name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" id="password" name="password" placeholder="Enter password">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
                         </div>
                         <button type="submit" value="submit" class="primary_btn">
                             <span>Enter</span>

@@ -2,8 +2,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="img/favicon.png" type="image/png">
-    <title>Contact Us</title>
+    <title>Educacion IT :: My Summay</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="resources/css/bootstrap.css">
     <link rel="stylesheet" href="resources/vendors/linericon/style.css">
